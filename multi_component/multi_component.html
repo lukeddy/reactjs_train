@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>reactjs-helloworld</title>
+	</head>
+	<body>
+       <div id="example"></div>
+	</body>
+</html>
+<script src="../assets/js/react-0.13.3/react.min.js"></script>
+<script src="../assets/js/react-0.13.3/JSXTransformer.js"></script>
+<script type="text/jsx">
+  
+  //自定义组件
+
+
+  var ProfilePic=React.createClass({
+    render:function(){
+      return (
+          <img src={this.props.imgsrc} alt={this.props.username}/>
+        );
+    }
+  });
+
+  var ProfileLink=React.createClass({
+    render:function(){
+      return (
+          <a href={'http://www.shikezhi.com/'+this.props.username}>
+             {this.props.username}
+          </a>
+        );
+    }
+  });
+
+  var Avatar=React.createClass({
+    render:function(){
+      return (
+          <div>
+            <ProfilePic username={this.props.username} imgsrc={this.props.imgsrc}/>
+            <ProfileLink username={this.props.username}/>
+          </div>
+        );
+    }
+  });
+
+  React.render(
+    <Avatar username="我的名字是TZQ" imgsrc="http://image.tianjimedia.com/uploadImages/2013/205/DFS05ZUL9W1C.jpg"/>,
+    document.getElementById('example')
+  );
+</script>

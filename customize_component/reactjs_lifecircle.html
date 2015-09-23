@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>reactjs-声明周期演示</title>
+	</head>
+	<body>
+       <div id="example"></div>
+	</body>
+</html>
+<script src="../assets/js/react-0.13.3/react.min.js"></script>
+<script src="../assets/js/react-0.13.3/JSXTransformer.js"></script>
+<script type="text/jsx">
+  
+  //自定义组件
+  var likeButton=React.createClass({
+    getInitialState:function(){
+      return {liked:false};
+    },
+    handleClick:function(event){
+      this.setState({liked:!this.state.liked});
+    },
+    render:function(){
+      var text=this.state.liked?'like':'haven\'t liked';
+      return <p onclick={this.handleClick}>
+                You {text} this. Click to toggle.
+             </p>
+    }
+  });
+
+  React.render(
+    <likeButton/>,
+    document.getElementById('example')
+  );
+</script>

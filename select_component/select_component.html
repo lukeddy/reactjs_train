@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>reactjs-helloworld</title>
+	</head>
+	<body>
+       <div id="example"></div>
+	</body>
+</html>
+<script src="../assets/js/react-0.13.3/react.min.js"></script>
+<script src="../assets/js/react-0.13.3/JSXTransformer.js"></script>
+<script type="text/jsx">
+  
+  //自定义组件
+  var MySelect=React.createClass({
+    getInitialState:function(){
+      return {selected:'B'};
+    },
+    render:function(){
+      return (
+          <div>
+            <select ref="select" value={this.state.selected}>
+                <option value="A">张三</option>
+                <option value="B">李四</option>
+                <option value="C">王武</option>
+            </select>
+          </div>
+        );
+    }
+  });
+
+  
+
+  React.render(
+    <MySelect />,
+    document.getElementById('example')
+  );
+</script>
