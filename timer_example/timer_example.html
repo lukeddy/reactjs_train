@@ -15,19 +15,19 @@
   	getInitialState:function(){
   		return {opacity:1.0};
   	},
-  	componemtDidMount:function(){
+  	componentDidMount:function(){
   		this.timer=setInterval(function(){
-  			var opacity=this.state.opacity;
-  			opacity-= .05;
-  			if(opacity<0.1){
-  				opacity=1.0;
+  			var currOpacity=this.state.opacity;
+  			currOpacity-=.05;
+  			if(currOpacity<0.1){
+  				currOpacity=1.0;
   			}
-  			this.setState({opacity:opacity});
+  			this.setState({opacity:currOpacity});
   		}.bind(this),100);
   	},
   	render:function(){
   	  return (
-          <div style={{opacity:this.state.opacity}}>
+          <div style={{opacity:this.state.opacity,color:'red'}}>
              Hello {this.props.name}
           </div>
   	  	);
