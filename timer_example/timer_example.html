@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>reactjs-helloworld</title>
+	</head>
+	<body>
+       <div id="example"></div>
+	</body>
+</html>
+<script src="../assets/js/react-0.13.3/react.min.js"></script>
+<script src="../assets/js/react-0.13.3/JSXTransformer.js"></script>
+<script type="text/jsx">
+  var Hello=React.createClass({
+  	getInitialState:function(){
+  		return {opacity:1.0};
+  	},
+  	componemtDidMount:function(){
+  		this.timer=setInterval(function(){
+  			var opacity=this.state.opacity;
+  			opacity-= .05;
+  			if(opacity<0.1){
+  				opacity=1.0;
+  			}
+  			this.setState({opacity:opacity});
+  		}.bind(this),100);
+  	},
+  	render:function(){
+  	  return (
+          <div style={{opacity:this.state.opacity}}>
+             Hello {this.props.name}
+          </div>
+  	  	);
+  	}
+  });
+
+  React.render(
+      <Hello name="worldi"/>,
+      document.body
+  	);
+</script>
