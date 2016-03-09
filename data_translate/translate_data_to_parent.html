@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>父级获取子级传递的数据</title>
+		<link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+       <div class="container">
+           <h3>react父级获取子级传递的数据示例</h3>
+		   <div id="example"></div>
+	   </div>
+	</body>
+</html>
+<script src="../assets/js/react-0.13.3/react.min.js"></script>
+<script src="../assets/js/react-0.13.3/JSXTransformer.js"></script>
+<script type="text/jsx">
+	var Text = React.createClass({
+		render : function(){
+			return (
+					<span>当前值：{this.props.txt}</span>
+			)
+		}
+	});
+	var Button = React.createClass({
+		getInitialState : function(){
+			return {num : 0}
+		},
+		handleClickFn : function(){
+			var n = this.state.num + 1;
+			this.setState({num : n});
+			this.props.handleClick(n);
+		},
+		render : function(){
+			return (
+					<input type="button" value="点我" onClick={this.handleClickFn} />
+			)
+		}
+	});
+	var Box = React.createClass({
+		getInitialState : function(){
+			return {num : 0}
+		},
+		handleClickFn : function(num){
+			this.setState({num : num});//num来自子组件
+		},
+		render : function(){
+			return (
+					<div>
+						<Button handleClick={this.handleClickFn} />
+						&nbsp;&nbsp;&nbsp;
+						<Text txt={this.state.num} />
+					</div>
+			)
+		}
+	});
+
+	React.render(<Box />,document.getElementById('example'));
+</script>
