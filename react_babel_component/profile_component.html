@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>reactjs-helloworld</title>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: #f2f2f2;
+            font-family: Roboto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h2 {
+            font-weight: 500;
+            margin: 0px;
+        }
+
+        h4 {
+            font-weight: 400;
+            font-size: 18px;
+            margin: 0px;
+            margin-bottom: 8px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .search-box {
+            margin: 16px;
+            margin-bottom: 2px;
+        }
+
+        .profile-box {
+            display: inline-block;
+            margin: 24px;
+            margin-top: 2px;
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: center;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        }
+
+        button {
+            background-color: #f44336;
+            outline:none;
+            color: white;
+            border: none;
+            border-radius: 10em;
+            margin: 6px;
+            transition: box-shadow 0.2s ease;
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        }
+        button:hover {
+             box-shadow: 0 0 8px rgba(0, 0, 0, 0.18), 0 8px 16px rgba(0, 0, 0, 0.36);
+         }
+        button:last-child {
+             background-color: #4caf50;
+         }
+
+        img {
+            box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+            margin-right: 12px;
+            margin-left: 12px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app"></div>
+</body>
+</html>
+<script src="../assets/js/react-0.13.3/react.min.js"></script>
+<script src="../assets/js/react-0.13.3/JSXTransformer.js"></script>
+<script type="text/jsx">
+    //react,es6编码方式,参考自:http://codepen.io/DevCoffee/pen/GZQaXb
+    //这里只是做了简单的修改,后期再完善
+    class Profile extends React.Component {
+        constructor(props) {
+            super(props);
+            //通过state设置的属性会实时更新
+            this.state = {
+                height: 200
+            };
+        }
+        render() {
+            var { name, age, bio, pic } = this.props;
+            var { height } = this.state;
+            return (
+                    <div className="profile-box">
+                        <h2>姓名:{name}</h2>
+                        <h4>年龄: {age}</h4>
+                        <h4>口头禅: {bio}</h4>
+                        <img src={pic} height={height} />
+                        <br />
+                        <button onClick={this.zoomPicOut.bind(this)}>-</button>
+                        <button onClick={this.zoomPicIn.bind(this)}>+</button>
+                    </div>
+            );
+        }
+        zoomPicIn() {
+            this.setState({height: this.state.height + 100});
+        }
+        zoomPicOut() {
+            this.setState({height: this.state.height - 100});
+        }
+    }
+    // props
+    // state
+    React.render(<Profile name="强哥" age={18} bio="今天要种树哦" pic="http://topic2.kugou.com/upload/xiongchumo/20131223/138777647592736974.jpg" />, document.getElementById('app'));
+</script>
