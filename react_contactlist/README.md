@@ -1,17 +1,17 @@
-# react,webpack简单项目
+## react,webpack简单项目
 
-## 如何运行?
-### 获取依赖库
+### 如何运行?
+#### 1.获取依赖库
 ```sh
 npm install
 ```
 
-### 打包
+#### 2.打包
 ```sh
 webpack
 ```
 
-### 浏览器打开文件测试,我这里使用的是mac的open命令,浏览器会自动打开
+#### 3.浏览器打开文件测试,我这里使用的是mac的open命令,浏览器会自动打开
 ```sh
 open index.html
 ```
@@ -21,7 +21,7 @@ open index.html
 ```sh
 ./node_module/.bin/webpack-dev-server
 ```
-#### 打开浏览器测试
+##### 打开浏览器测试
 ```sh
 open http://localhost:8080/
 ```
